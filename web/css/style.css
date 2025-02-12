@@ -1,0 +1,469 @@
+/* Общие стили */
+body {
+    margin: 0;
+    background: linear-gradient(to right, #4c68d7, #2b5876);
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+p {
+    font-size: 16px; /* Эквивалент 16px */
+    line-height: 1.8; /* Пространство между строками */
+    color: #444; /* Тёмно-серый для улучшенной читаемости */
+    margin-bottom: 1em; /* Отступ между абзацами */
+}
+
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Стили для ссылок */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #4CAF50;
+}
+
+/* Стили для заголовков */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.4; /* Немного меньше межстрочное для заголовков */
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: #222; /* Более контрастный для заголовков */
+}
+
+h1 {
+    font-size: 2rem; /* 32px на ПК */
+}
+
+h2 {
+    font-size: 1.75rem; /* 28px */
+}
+
+h3 {
+    font-size: 1.5rem; /* 24px */
+}
+
+h4 {
+    font-size: 1.25rem; /* 20px */
+}
+
+h5 {
+    font-size: 1rem; /* 16px */
+}
+
+h6 {
+    font-size: 0.875rem; /* 14px */
+}
+
+
+/* Стили для таблиц */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Контейнер для адаптивной таблицы */
+.table-responsive {
+    overflow-x: auto; /* Включаем горизонтальный скроллинг */
+    -webkit-overflow-scrolling: touch; /* Плавный скроллинг для мобильных устройств */
+    width: 100%; /* Обеспечиваем, чтобы обёртка занимала всю ширину */
+    margin-bottom: 20px; /* Отступ снизу */
+    border: 1px solid #ddd; /* Рамка для визуального разделения */
+    border-radius: 5px; /* Сглаживаем углы */
+}
+
+/* Адаптация таблицы */
+.table {
+    width: 100%; /* Таблица растягивается на всю ширину */
+    table-layout: auto; /* Автоматическая ширина столбцов */
+}
+
+th, td {
+    white-space: nowrap; /* Запрещаем перенос текста внутри ячеек */
+    text-align: center; /* Выравниваем текст по центру */
+    padding: 8px; /* Добавляем отступы для читабельности */
+}
+tr:nth-child(even) {
+    background-color: #ffe0d0;
+}
+
+tr:nth-child(odd) {
+    background-color: #e0f0ff;
+}
+
+th {
+    background-color: #80b0ff;
+    color: white;
+    font-weight: bold;
+}
+
+/* Стили для шапки */
+.site-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px; /* Уменьшено для мобильных устройств */
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    gap: 10px; /* Уменьшено расстояние между элементами */
+}
+
+.site-header h1 {
+    font-size: 18px; /* Уменьшен шрифт на мобильных устройствах */
+    color: #4c68d7;
+    white-space: nowrap;
+}
+
+.site-header img {
+    max-height: 40px; /* Уменьшен размер логотипа */
+    margin: 0;
+}
+
+/* Стили для навигации */
+.site-nav {
+    display: flex;
+    justify-content: center;
+    background: #fff;
+    padding: 5px 0; /* Уменьшено для мобильных устройств */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.site-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Переносит элементы на новую строку на узких экранах */
+    gap: 10px;
+}
+
+.site-nav a {
+    padding: 8px 12px; /* Уменьшены отступы */
+    border-radius: 5px;
+    color: #333;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.site-nav a.active {
+    background-color: #4c68d7; /* Цвет активного состояния */
+    color: white; /* Цвет текста активной ссылки */
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+.site-nav a:hover {
+    background: #f0f0f0;
+}
+
+/* Логотип и надпись TrackerTT */
+.logo-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Расстояние между логотипом и текстом TrackerTT */
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-link img {
+    max-height: 40px; /* Логотип по высоте */
+    margin-right: 10px;
+}
+
+
+/* Контейнер для основного контента */
+/* Общие стили для контейнера */
+.container {
+    width: 100%; /* Занимает всю ширину */
+    max-width: 1200px; /* Увеличиваем максимальную ширину */
+    margin: 20px auto; /* Центрирование */
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Для изображений */
+img {
+    width: auto; /* Убираем фиксированную ширину */
+    height: auto; /* Сохраняем пропорции */
+    max-width: 100%; /* Ограничиваем изображение шириной контейнера */
+    display: block; /* Убираем лишние отступы */
+    margin: 0 auto; /* Центрируем изображение */
+}
+
+
+/* Дополнительно для контейнера изображения */
+.image-container {
+    width: 100%; /* Контейнер занимает всю ширину экрана */
+    max-width: 1200px; /* Устанавливаем максимальную ширину */
+    margin: 0 auto; /* Центрируем контейнер */
+    text-align: center; /* Центрируем содержимое внутри контейнера */
+}
+
+.responsive-image {
+    width: 100%; /* Изображение занимает всю ширину контейнера */
+    height: auto; /* Сохраняем пропорции изображения */
+    max-width: 800px; /* Устанавливаем максимальную ширину изображения */
+    display: block; /* Убираем лишние отступы */
+    margin: 0 auto; /* Центрируем изображение */
+}
+
+
+/* Стили для подвала */
+footer {
+    width: 100%;
+    background: #fff;
+    padding: 15px; /* Уменьшен padding */
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Медиа-запросы для адаптивной верстки */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .table th, .table td {
+        font-size: 14px; /* Уменьшаем шрифт на мобильных устройствах */
+        padding: 5px; /* Уменьшаем отступы на маленьких экранах */
+    }
+
+    .image-container {
+        max-width: 100%; /* Изображение занимает ширину экрана */
+        aspect-ratio: auto; /* Соотношение сторон больше не фиксировано */
+    }
+
+    img {
+        object-fit: contain; /* Вписывает изображение без обрезания */
+    }
+
+    .site-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    table {
+        font-size: 12px; /* Уменьшение текста в таблице */
+    }
+
+    th, td {
+        padding: 5px; /* Уменьшение отступов в ячейках */
+    }
+
+    .site-header h1 {
+        font-size: 16px; /* Ещё меньший шрифт для заголовка */
+    }
+
+    .site-header img {
+        max-height: 30px; /* Ещё меньший логотип */
+    }
+
+    footer {
+        font-size: 12px; /* Уменьшен шрифт в подвале */
+    }
+}
+
+/* Стили для ещё меньших экранов (например, 480px) */
+@media (max-width: 480px) {
+    .site-nav a {
+        font-size: 12px; /* Ещё меньший шрифт ссылок */
+    }
+
+    .container {
+        padding: 5px; /* Минимальный padding */
+    }
+
+    table {
+        font-size: 10px; /* Минимальный шрифт в таблицах */
+    }
+}
+
+
+/* Для больших экранов */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1400px; /* Широкий контейнер на больших экранах */
+    }
+}
+
+/* Активная кнопка "Фильтр" */
+#filter-button.active {
+    background-color: red; /* Цвет активной кнопки */
+    color: white;
+    border: 2px solid darkred; /* Обводка */
+}
+
+/* Активная развернутая запись */
+.result-item.active {
+    background-color: #f0f0f0; /* Светлый фон для развернутой записи */
+    border-left: 5px solid #4c68d7; /* Синий индикатор слева */
+}
+
+.details {
+    display: none; /* По умолчанию скрыто */
+    background-color: #f9f9f9; /* Цвет фона для развёрнутой записи */
+    padding: 10px; /* Внутренние отступы */
+    border: 1px solid #ddd; /* Рамка */
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.result-item.active .details {
+    display: block; /* Показывается при разворачивании */
+    background-color: #e0f7fa; /* Цвет фона для активной записи */
+}
+
+
+
+
+
+#filter-button.active {
+    background-color: red; /* Цвет кнопки при активном состоянии */
+    color: white; /* Цвет текста */
+    border: 2px solid darkred; /* Обводка */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.result-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-left 0.3s;
+}
+
+.result-item.active {
+    background-color: #f0f0f0; /* Светлый фон для активной записи */
+    border-left: 5px solid #4c68d7; /* Синий индикатор слева */
+}
+
+.details {
+    display: none; /* Скрываем детали по умолчанию */
+    background-color: #f9f9f9; /* Фон для раскрытых записей */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.result-item.active .details {
+    display: block; /* Показываем детали для активной записи */
+    background-color: #e0f7fa; /* Светлый голубой фон */
+}
+
+
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    gap: 16px; /* Зазор между элементами */
+    margin: 20px;
+    padding: 0;
+}
+
+.grid-item {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-bottom: 4px solid #f4f4f4;
+}
+
+.grid-item h3 {
+    font-size: 18px;
+    margin: 10px 16px 0 16px;
+    color: #333;
+}
+
+.grid-item p {
+    font-size: 14px;
+    margin: 10px 16px 16px 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap; /* Теги будут переходить на новую строку, если не поместятся */
+    margin: 0 16px 16px 16px;
+    gap: 8px; /* Зазор между тегами */
+}
+
+.tag {
+    background-color: #007bff; /* Синий цвет для тегов */
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase; /* Верхний регистр */
+    cursor: default; /* Убираем указатель на теги */
+    font-weight: bold;
+}
+
+.tag:hover {
+    background-color: #0056b3; /* Темнее при наведении */
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .masonry-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки для планшетов */
+    }
+}
+
+@media (max-width: 480px) {
+    .masonry-grid {
+        grid-template-columns: 1fr; /* 1 колонка для мобильных устройств */
+    }
+}
+
+/* Ограничение ширины текста в столбце "Описание" */
+.description-column {
+    max-width: 300px; /* Ограничиваем ширину */
+    word-wrap: break-word; /* Перенос слов на новую строку */
+    white-space: normal; /* Разрешаем перенос строк */
+}
+
