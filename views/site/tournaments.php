@@ -95,6 +95,17 @@ $this->title = 'Ваши записи';
     <?php endforeach; ?>
 </ul>
 
+<script>
+// Функция для разворачивания информации
+function toggleDetails(element) {
+    const details = element.querySelector('.details');
+    const isHidden = details.style.display === 'none';
+
+    details.style.display = isHidden ? 'block' : 'none';
+    element.classList.toggle('active', isHidden); // Добавляем/убираем класс active
+}
+</script>
+
 
 
 
