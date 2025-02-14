@@ -79,7 +79,7 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->role === 'admin' || $this->role === 'superadmin';
     }
 
-    public function isSuperAdmin()
+    public function isSuperAdmin() //
     {
         return $this->role === 'superadmin';
     }

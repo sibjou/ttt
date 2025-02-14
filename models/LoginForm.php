@@ -23,7 +23,7 @@ class LoginForm extends Model
         ];
     }
 
-    public function attributeLabels()
+    public function attributeLabels() //
     {
         return [
             'email' => Yii::t('app', 'Email'),
