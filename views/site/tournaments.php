@@ -104,8 +104,25 @@ function toggleDetails(element) {
     details.style.display = isHidden ? 'block' : 'none';
     element.classList.toggle('active', isHidden); // Добавляем/убираем класс active
 }
+
+// Управление кнопкой "Фильтр"
+document.getElementById('filter-button').addEventListener('click', function () {
+    const filterOptions = document.getElementById('filter-options');
+    const isHidden = filterOptions.style.display === 'none';
+
+    filterOptions.style.display = isHidden ? 'block' : 'none';
+    this.classList.toggle('active', isHidden); // Изменение состояния кнопки
+    this.textContent = isHidden ? 'Скрыть фильтр' : 'Фильтр';
+});
+
+// Показать/скрыть доп. списки для фильтров
+['tournament', 'country', 'city'].forEach(type => {
+    document.getElementById(`filter-${type}-button`).addEventListener('click', function () {
+        const options = document.getElementById(`${type}-options`);
+        options.style.display = options.style.display === 'none' ? 'block' : 'none';
+    });
+});
+
 </script>
-
-
 
 
