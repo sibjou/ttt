@@ -30,7 +30,7 @@ $this->registerCssFile('@web/css/style.css'); // Подключение стил
             <!-- Логотип -->
             <li class="logo-item">
                 <a href="<?= Yii::$app->homeUrl ?>" class="logo-link">
-                    <img src="<?= Yii::getAlias('@web') ?>/images/new-logo100.png" alt="Логотип сайта" class="site-logo">
+                    <img src="<?= Yii::getAlias('@web') ?>/images/new-logo255-66.png" alt="Логотип сайта" class="site-logo">
                 </a>
             </li>
             <!-- Основное меню -->
