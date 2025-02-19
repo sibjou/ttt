@@ -123,6 +123,48 @@ document.getElementById('filter-button').addEventListener('click', function () {
     });
 });
 
+// Сортировка по дате
+document.getElementById('sort-date-button').addEventListener('click', function () {
+    const list = document.getElementById('results-list');
+    const items = Array.from(list.querySelectorAll('.result-item'));
+
+    items.sort((a, b) => new Date(a.getAttribute('data-date')) - new Date(b.getAttribute('data-date')));
+    list.innerHTML = '';
+    items.forEach(item => list.appendChild(item));
+});
+
+// Сортировка по фамилии
+document.getElementById('sort-name-button').addEventListener('click', function () {
+    const list = document.getElementById('results-list');
+    const items = Array.from(list.querySelectorAll('.result-item'));
+
+    items.sort((a, b) => a.getAttribute('data-surname').localeCompare(b.getAttribute('data-surname')));
+    list.innerHTML = '';
+    items.forEach(item => list.appendChild(item));
+});
+
+// Поиск по записям
+document.getElementById('search-input').addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+    document.querySelectorAll('.result-item').forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(query) ? 'block' : 'none';
+    });
+});
+
+// Фильтрация записей
+document.getElementById('apply-filters').addEventListener('click', function () {
+    const tournamentFilter = document.getElementById('filter-tournament').value.toLowerCase();
+    const countryFilter = document.getElementById('filter-country').value.toLowerCase();
+    const cityFilter = document.getElementById('filter-city').value.toLowerCase();
+
+    document.querySelectorAll('.result-item').forEach(item => {
+        const matchesTournament = !tournamentFilter || item.getAttribute('data-tournament').toLowerCase().includes(tournamentFilter);
+        const matchesCountry = !countryFilter || item.getAttribute('data-country').toLowerCase().includes(countryFilter);
+        const matchesCity = !cityFilter || item.getAttribute('data-city').toLowerCase().includes(cityFilter);
+
+        item.style.display = matchesTournament && matchesCountry && matchesCity ? 'block' : 'none';
+    });
+});
 </script>
 
 
