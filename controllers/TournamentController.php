@@ -157,9 +157,13 @@ class TournamentController extends Controller
             throw new NotFoundHttpException('Запись не найдена.');
         }
 
-        $model->delete();
-        Yii::$app->session->setFlash('success', 'Запись успешно удалена.');
-        return $this->redirect(['tournaments']);
+        if ($model->delete()) { // Важно проверить, успешно ли удалена запись
+            Yii::$app->session->setFlash('success', 'Запись успешно удалена.');
+        } else {
+            Yii::$app->session->setFlash('error', 'Ошибка при удалении записи.'); // Обработка ошибок
+        }
+
+        return $this->redirect(Yii::$app->request->referrer ?: ['tournaments']);
     }
 
 
