@@ -128,4 +128,35 @@ class AdminController extends Controller
 
         return $this->redirect(['users']);
     }
+
+
+
+    /**
+     * Обновление рейтинга игроков.
+     */
+    public function actionRating()
+    {
+        $model = new \yii\base\DynamicModel(['winner', 'loser']);
+        $model->addRule(['winner', 'loser'], 'required')
+              ->addRule(['winner', 'loser'], 'string');
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $winner = User::findOne(['username' => $model->winner]);
+            $loser = User::findOne(['username' => $model->loser]);
+
+            if (!$winner || !$loser) {
+                Yii::$app->session->setFlash('error', 'Один или оба игрока не найдены.');
+            } else {
+                Yii::$app->runAction('tournament/update-rating', [
+                    'winnerId' => $winner->id,
+                    'loserId' => $loser->id,
+                ]);
+                Yii::$app->session->setFlash('success', 'Рейтинг игроков успешно обновлен.');
+            }
+
+            return $this->refresh();
+        }
+
+        return $this->render('rating', ['model' => $model]);
+    }
 }
