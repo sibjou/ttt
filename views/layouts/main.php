@@ -66,7 +66,7 @@ $this->registerCssFile('@web/css/style.css'); // Подключение стил
                             : [],
                     ],
                     [
-                        'label' => 'Турниры',
+                        'label' => 'Мои игры',
                         'url' => ['/site/tournaments'],
                         'linkOptions' => Yii::$app->controller->id === 'site' && Yii::$app->controller->action->id === 'tournaments'
                             ? ['class' => 'active']

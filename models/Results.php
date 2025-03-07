@@ -74,7 +74,8 @@ class Results extends ActiveRecord
         $statistics->total_losses += $this->games_lost;
 
         // Рассчитываем процент побед
-        $statistics->win_rate = $statistics->total_wins / max($statistics->total_games, 1) * 100;
+        $total_games = $statistics->total_wins + $statistics->total_losses;
+        $statistics->win_rate = ($total_games > 0) ? ($statistics->total_wins / $total_games) * 100 : 0;
 
         // Сохраняем обновленные данные
         $statistics->save(false);

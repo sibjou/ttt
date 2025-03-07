@@ -80,7 +80,7 @@ $this->title = 'Ваши записи';
                 <p><strong>Рука:</strong> <?= Html::encode(Yii::t('app', $result->hand)) ?></p>
                 <p><strong>Страна:</strong> <?= Html::encode($result->country) ?></p>
                 <p><strong>Город:</strong> <?= Html::encode($result->city) ?></p>
-                <p><strong>Название турнира:</strong> <?= Html::encode($result->tournament_name) ?></p>
+                <p><strong>Название турнира(или место проведения):</strong> <?= Html::encode($result->tournament_name) ?></p>
             </div>
             <div class="actions">
                 <a href="<?= Yii::$app->urlManager->createUrl(['tournament/update', 'id' => $result->id]) ?>" class="btn btn-primary btn-sm">Изменить</a>

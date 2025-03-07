@@ -55,7 +55,7 @@ $this->title = 'Добавить результат';
 
 <?= $form->field($model, 'tournament_name')->textInput([
     'value' => $lastTournament, // Предложение последнего введенного значения
-    'placeholder' => 'Введите название турнира',
+    'placeholder' => 'Введите название турнира (или место проведения)',
 ])->label('Название турнира') ?>
 
 <div class="form-group">

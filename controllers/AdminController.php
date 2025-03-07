@@ -159,4 +159,60 @@ class AdminController extends Controller
 
         return $this->render('rating', ['model' => $model]);
     }
+
+      /**
+     * Управление новостями (список).
+     */
+    public function actionNews()
+    {
+        $dataProvider = new \yii\data\ActiveDataProvider([
+            'query' => News::find()->orderBy(['created_at' => SORT_DESC]),
+            'pagination' => ['pageSize' => 10],
+        ]);
+
+        return $this->render('news', ['dataProvider' => $dataProvider]);
+    }
+
+
+    /**
+     * Создание новой новости.
+     */
+    public function actionCreateNews()
+    {
+        $model = new News();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload() && $model->save(false)) {
+                Yii::$app->session->setFlash('success', 'Новость успешно добавлена.');
+                return $this->redirect(['news']);
+            }
+        }
+
+        return $this->render('create-news', ['model' => $model]);
+    }
+
+
+
+    public function actionUpdateNews($id)
+    {
+        $model = News::findOne($id);
+
+        if (!$model) {
+            throw new NotFoundHttpException('Новость не найдена.');
+        }
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->imageFile && $model->upload()) {
+                $model->save(false);
+            } elseif ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Новость успешно обновлена.');
+                return $this->redirect(['news']);
+            }
+        }
+
+        return $this->render('create-news', ['model' => $model]);
+    }
+
 }
